@@ -2,7 +2,7 @@
 
 This repository contains code for Docuscan Web App
 
-Technologies Used:
+###### Technologies Used:
 
     Python
 
