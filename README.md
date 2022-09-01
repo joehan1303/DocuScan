@@ -1,3 +1,5 @@
+# DocuScan
+
 This repository contains code for Docuscan Web App
 
 Technologies Used:
@@ -18,4 +20,5 @@ Technologies Used:
 
     matplotlib
 
-[requirements.txt](https://github.com/joehan1303/DocuScan/files/9471824/requirements.txt)
+## Requirements
+[Download requirements.txt](https://github.com/joehan1303/DocuScan/files/9471824/requirements.txt)
