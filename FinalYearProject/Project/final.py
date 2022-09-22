@@ -74,13 +74,6 @@ def scan(img):
             break
     # Sorting the corners and converting them to desired shape.
     corners = sorted(np.concatenate(corners).tolist())
-    # return corners
-    # Displaying the corners.
-    '''
-    for index, c in enumerate(corners):
-        character = chr(65 + index)
-        cv2.putText(con, character, tuple(c), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 1, cv2.LINE_AA)
-   '''
     # For 4 corner points being detected.
     # Rearranging the order of the corner points.
     corners = order_points(corners)
@@ -110,22 +103,9 @@ def scan(img):
     final = un_warped[:destination_corners[2][1], :destination_corners[2][0]]
     return final
 
-#for img_path in glob.glob('inputs\img5.jpg'):
-   # try:
-#img_path = glob.glob('inputs/img5.jpg')
 img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
-#print(img_path)
-
 scanned_img = scan(img)
 plt.imshow(scanned_img)
-        # cv2.imshow("scanner", scanned_img)
-        #cv2.imwrite('outputs/' + img_path.split('/')[-1], scanned_img)
 print("scanned")
-#key = cv2.waitKey(0)
-        #if key == 27:
-            #break
-   #except:
-        #print('fail')
-
 plt.show()
 cv2.destroyAllWindows()
