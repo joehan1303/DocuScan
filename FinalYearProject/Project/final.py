@@ -113,7 +113,7 @@ def scan(img):
 #for img_path in glob.glob('inputs\img5.jpg'):
    # try:
 #img_path = glob.glob('inputs/img5.jpg')
-img = cv2.imread('inputs\img5.jpg')
+img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
 #print(img_path)
 
 scanned_img = scan(img)

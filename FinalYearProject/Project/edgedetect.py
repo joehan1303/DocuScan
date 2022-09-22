@@ -35,7 +35,7 @@ def scan(img):
     con = cv2.drawContours(con, page, -1, (0, 255, 255), 3)
     return con
 
-img = cv2.imread('inputs/img5.jpg')
+img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
 scanned_img = scan(img)
 plt.imshow(scanned_img)
 print("scanned")

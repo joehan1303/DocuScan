@@ -16,7 +16,7 @@ def scan(img):
     img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel, iterations=5)
     return img
     
-img = cv2.imread('inputs\img5.jpg')
+img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
 scanned_img = scan(img)
 plt.imshow(scanned_img)
 print("scanned")

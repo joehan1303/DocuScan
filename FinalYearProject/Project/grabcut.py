@@ -24,7 +24,7 @@ def scan(img):
     mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
     img = img * mask2[:, :, np.newaxis]
     return img
-img = cv2.imread('inputs\img5.jpg')
+img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
 scanned_img = scan(img)
 plt.imshow(scanned_img)
 print("scanned")
