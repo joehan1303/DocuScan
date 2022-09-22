@@ -116,25 +116,23 @@ output_file = 'FinalYearProject\Project\Temp\output.png'
 scanned_img = scan(img)
 data = Image.fromarray(scanned_img)
 file_exists = os.path.exists(output_file)
+def ocrmanager(img_path):
+    result = ocr.ocr(img_path)
+    txts = [line[1][0] for line in result]
+    scores = [line[1][1] for line in result]
+    accuracy = sum(scores) / len(scores)
+    print(txts)
+    print(accuracy)
+
 if file_exists is True:
     os.remove(output_file)
     data.save(output_file)
-    img_path = output_file
-    result = ocr.ocr(img_path)
-    txts = [line[1][0] for line in result]
-    scores = [line[1][1] for line in result]
-    accuracy = sum(scores) / len(scores)
-    print(txts)
-    print(accuracy)
+    ocrmanager(output_file)
+
 else:
     data.save(output_file)
     img_path = output_file
-    result = ocr.ocr(img_path)
-    txts = [line[1][0] for line in result]
-    scores = [line[1][1] for line in result]
-    accuracy = sum(scores) / len(scores)
-    print(txts)
-    print(accuracy)
+    ocrmanager(output_file)
 
 
 
