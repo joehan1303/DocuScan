@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pathlib
 from streamlit_drawable_canvas import st_canvas
@@ -6,6 +7,8 @@ import numpy as np
 import io
 import base64
 from PIL import Image
+from paddleocr import PaddleOCR
+ocr = PaddleOCR(use_angle_cls=True)
 
 # We create a downloads directory within the streamlit static asset directory
 # and we write output files to it
@@ -180,3 +183,33 @@ if uploaded_file is not None:
         result = Image.fromarray(final[:, :, ::-1])
         st.sidebar.markdown(get_image_download_link(result, 'output.png', 'Download ' + 'Output'),
                             unsafe_allow_html=True)
+
+
+
+
+        output_file = 'FinalYearProject\Project\Temp\output.png'
+        # Scanned_img datatype is <class 'numpy.ndarray'>
+        #scanned_img = scan(img)
+        data = Image.fromarray(final)
+        file_exists = os.path.exists(output_file)
+        def ocrmanager(img_path):
+            result = ocr.ocr(img_path)
+            txts = [line[1][0] for line in result]
+            scores = [line[1][1] for line in result]
+            accuracy = sum(scores) / len(scores)
+            with open('FinalYearProject\Project\Temp\output.txt', 'w') as f:
+                f.write('confidence = '+ format(accuracy,'.2%') +'\n')
+                f.write('\n'.join(txts))
+            
+        if file_exists is True:
+            os.remove(output_file)
+            data.save(output_file)
+            ocrmanager(output_file)
+        else:
+            data.save(output_file)
+            ocrmanager(output_file)
+
+        download_txt = open('FinalYearProject\Project\Temp\output.txt')
+        st.sidebar.download_button('Download Text', download_txt)
+
+
