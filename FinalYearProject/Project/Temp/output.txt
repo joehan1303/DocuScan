@@ -1,4 +1,4 @@
-confidence = 93.03%
+confidence = 92.99%
 NANAVATI
 NAME:MR.JOEHANMISQUITTA
 20YRS
@@ -22,7 +22,7 @@ about 1.3 cm in short axis. In the bilateral retroclavicular region there are su
 significant necrosis is seen within these lymph nodes.
 The mediastinal great vessels are normal.
 The lung window settings do not demonstrate any significant parenchymal nodule, air space
-consolidation, centrilobularopacities, interstitial septal thickening,honeycombing or bronchiectasis.
+consolidation,centrilobularopacities,interstitial septal thickening,honeycombing or bronchiectasis.
 The trachea and main bronchi are patent.
 There is no pericardial effusion, thickening or calcification.
 There is a mild right pleural effusion with attenuation values of 0 to 10 HU and collapse of the
@@ -31,8 +31,8 @@ Theliver, pancreas, spleen, both adrenal glands andkidneys are normal.
 The gall bladder is contracted. The CBD is not dilated.
 The celiac artery, the superior mesenteric artery and the inferior mesenteric artery are normal. The
 superior mesenteric vein, the splenic vein and the portal veins are patent.
-There isnoascites orperitoneal/omental abnormality.
-DrBalabhai Nanavati Hospital (Charitable)
+There isnoascites or peritoneal/omental abnormality.
+Dr. Balabhai Nanavati Hospital (Charitable)
 5. V. Road, Vile Parle (W). Mumbal 400 056
 Tel:+912226267500
 Managed by Radiont Life Care Mumbai Private Limited

@@ -112,15 +112,13 @@ def scan(img):
                                 flags=cv2.INTER_LINEAR)
     return final
 
-
 # Generating a link to download a particular image file.
-def get_image_download_link(img, filename, text):
+def get_image_download_Button(img):
     buffered = io.BytesIO()
     img.save(buffered, format='JPEG')
     img_str = base64.b64encode(buffered.getvalue()).decode()
-    href = f'<a href="data:file/txt;base64,{img_str}" download="{filename}">{text}</a>'
-    return href
-
+    #href = f'<a href="data:file/txt;base64,{img_str}" download="{filename}">{text}</a>'
+    return img_str
 
 # Set title.
 st.sidebar.title('Document Scanner')
@@ -179,19 +177,10 @@ if uploaded_file is not None:
             final = scan(image)
             st.image(final, channels='BGR', use_column_width=True)
     if final is not None:
-        # Display link.
-        result = Image.fromarray(final[:, :, ::-1])
-        st.sidebar.markdown(get_image_download_link(result, 'output.png', 'Download ' + 'Output'),
-                            unsafe_allow_html=True)
-
-
-
-
         output_file = 'FinalYearProject\Project\Temp\output.png'
-        # Scanned_img datatype is <class 'numpy.ndarray'>
-        #scanned_img = scan(img)
-        data = Image.fromarray(final)
+        data = Image.fromarray(final[:, :, ::-1])
         file_exists = os.path.exists(output_file)
+        #Manages OCR Functionality
         def ocrmanager(img_path):
             result = ocr.ocr(img_path)
             txts = [line[1][0] for line in result]
@@ -200,16 +189,21 @@ if uploaded_file is not None:
             with open('FinalYearProject\Project\Temp\output.txt', 'w') as f:
                 f.write('confidence = '+ format(accuracy,'.2%') +'\n')
                 f.write('\n'.join(txts))
-            
+        #Check if file Exists    
         if file_exists is True:
+            # if true Remove existing file and save new file
             os.remove(output_file)
             data.save(output_file)
-            ocrmanager(output_file)
         else:
+            #else save file
             data.save(output_file)
-            ocrmanager(output_file)
+            
+        ocrmanager(output_file)
+        #Display Download Buttons for image and txt files
+        with open(output_file, "rb") as file:    
+            st.sidebar.download_button(label="Download image", data= file, file_name="output.png", mime="image/png")
+        with open('FinalYearProject\Project\Temp\output.txt') as txt:
+            st.sidebar.download_button('Download Text', txt)
 
-        download_txt = open('FinalYearProject\Project\Temp\output.txt')
-        st.sidebar.download_button('Download Text', download_txt)
 
 
