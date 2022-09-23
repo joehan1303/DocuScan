@@ -21,6 +21,3 @@ This repository contains code for Docuscan Web App
     matplotlib
     
     PaddleOCR
-
-## Requirements
-[Download requirements.txt](https://github.com/joehan1303/DocuScan/files/9471824/requirements.txt)
