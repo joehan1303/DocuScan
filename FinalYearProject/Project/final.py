@@ -97,7 +97,7 @@ def scan(img):
 
 img = cv2.imread('FinalYearProject\Project\inputs\personal1.jpg')
 scanned_img = scan(img)
-plt.imshow(scanned_img)
+plt.imshow(scanned_img[:, :, ::-1])
 print("scanned")
 plt.show()
 cv2.destroyAllWindows()

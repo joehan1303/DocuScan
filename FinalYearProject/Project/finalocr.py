@@ -102,7 +102,7 @@ def scan(img):
 img = cv2.imread('FinalYearProject\Project\inputs\personal1.jpg')
 # Scanned_img datatype is <class 'numpy.ndarray'>
 scanned_img = scan(img)
-data = Image.fromarray(scanned_img)
+data = Image.fromarray(scanned_img[:, :, ::-1])
 output_file = 'FinalYearProject\Project\Temp\output.png'
 file_exists = os.path.exists(output_file)
 def ocrmanager(img_path):
@@ -123,7 +123,7 @@ else:
     ocrmanager(output_file)
 
 
-plt.imshow(scanned_img)
+plt.imshow(scanned_img[:, :, ::-1])
 print("scanned")
 plt.show()
 cv2.destroyAllWindows()
