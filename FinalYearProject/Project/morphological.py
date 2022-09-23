@@ -1,4 +1,3 @@
-#For Presentation Purposes Only
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,8 +13,7 @@ def scan(img):
     # Repeated Closing operation to remove text from the document.
     kernel = np.ones((5, 5), np.uint8)
     img = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel, iterations=5)
-    return img
-    
+    return img   
 img = cv2.imread('FinalYearProject\Project\inputs\img5.jpg')
 scanned_img = scan(img)
 plt.imshow(scanned_img)

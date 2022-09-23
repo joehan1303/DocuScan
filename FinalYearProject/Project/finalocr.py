@@ -1,17 +1,12 @@
-#For Presentation Purposes Only
 import cv2
 import numpy as np
-import glob
 import matplotlib.pyplot as plt
 from PIL import Image
-from paddleocr import PaddleOCR,draw_ocr
+from paddleocr import PaddleOCR
 import os
-import io
-import base64
 #%matplotlib inline
 ocr = PaddleOCR(use_angle_cls=True)
-out_path = 'FinalYearProject\Project\Temp'
-font = 'FinalYearProject\Project\simfang.ttf'
+
 def order_points(pts):
     '''Rearrange coordinates to order:
        top-left, top-right, bottom-right, bottom-left'''
@@ -31,7 +26,6 @@ def order_points(pts):
     # return the ordered coordinates
     return rect.astype('int').tolist()
 
-
 def find_dest(pts):
     (tl, tr, br, bl) = pts
     # Finding the maximum width.
@@ -47,7 +41,6 @@ def find_dest(pts):
     destination_corners = [[0, 0], [maxWidth, 0], [maxWidth, maxHeight], [0, maxHeight]]
 
     return order_points(destination_corners)
-
 
 def scan(img):
     # Resize image to workable size
@@ -102,21 +95,15 @@ def scan(img):
     # Getting the homography.
     M = cv2.getPerspectiveTransform(np.float32(corners), np.float32(destination_corners))
     # Perspective transform using homography.
-    final = cv2.warpPerspective(orig_img, M, (destination_corners[2][0], destination_corners[2][1]),
-                                flags=cv2.INTER_LINEAR)
+    final = cv2.warpPerspective(orig_img, M, (destination_corners[2][0], destination_corners[2][1]), flags=cv2.INTER_LINEAR)
     return final
 
-
-
-
-
+#Input Image
 img = cv2.imread('FinalYearProject\Project\inputs\personal1.jpg')
-
-
-output_file = 'FinalYearProject\Project\Temp\output.png'
 # Scanned_img datatype is <class 'numpy.ndarray'>
 scanned_img = scan(img)
 data = Image.fromarray(scanned_img)
+output_file = 'FinalYearProject\Project\Temp\output.png'
 file_exists = os.path.exists(output_file)
 def ocrmanager(img_path):
     result = ocr.ocr(img_path)
@@ -126,6 +113,7 @@ def ocrmanager(img_path):
     with open('FinalYearProject\Project\Temp\output.txt', 'w') as f:
         f.write('confidence = '+ format(accuracy,'.2%') +'\n')
         f.write('\n'.join(txts))
+
 if file_exists is True:
     os.remove(output_file)
     data.save(output_file)

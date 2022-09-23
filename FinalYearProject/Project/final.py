@@ -1,9 +1,6 @@
-#For Presentation Purposes Only
 import cv2
 import numpy as np
-import glob
 import matplotlib.pyplot as plt
-from PIL import Image
 
 def order_points(pts):
     '''Rearrange coordinates to order:
@@ -95,8 +92,7 @@ def scan(img):
     # Getting the homography.
     M = cv2.getPerspectiveTransform(np.float32(corners), np.float32(destination_corners))
     # Perspective transform using homography.
-    final = cv2.warpPerspective(orig_img, M, (destination_corners[2][0], destination_corners[2][1]),
-                                flags=cv2.INTER_LINEAR)
+    final = cv2.warpPerspective(orig_img, M, (destination_corners[2][0], destination_corners[2][1]), flags=cv2.INTER_LINEAR)
     return final
 
 img = cv2.imread('FinalYearProject\Project\inputs\personal1.jpg')

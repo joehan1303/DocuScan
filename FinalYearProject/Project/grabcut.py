@@ -1,4 +1,3 @@
-#For Presentation Purposes Only
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,7 +8,6 @@ def scan(img):
     if max_dim > dim_limit:
         resize_scale = dim_limit / max_dim
         img = cv2.resize(img, None, fx=resize_scale, fy=resize_scale)
-
     # Create a copy of resized original image for later use
     orig_img = img.copy()
     # Repeated Closing operation to remove text from the document.
