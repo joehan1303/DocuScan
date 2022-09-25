@@ -48,9 +48,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    
-      - name: Updating Linux
-        run: apt-get update && apt-get upgrade
         
       - name: Install Linux Dependancies
         run: sudo apt-get install libgomp1
