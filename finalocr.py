@@ -99,18 +99,18 @@ def scan(img):
     return final
 
 #Input Image
-img = cv2.imread('FinalYearProject\Project\inputs\personal1.jpg')
+img = cv2.imread('inputs\personal1.jpg')
 # Scanned_img datatype is <class 'numpy.ndarray'>
 scanned_img = scan(img)
 data = Image.fromarray(scanned_img[:, :, ::-1])
-output_file = 'FinalYearProject\Project\Temp\output.png'
+output_file = 'Temp\output.png'
 file_exists = os.path.exists(output_file)
 def ocrmanager(img_path):
     result = ocr.ocr(img_path)
     txts = [line[1][0] for line in result]
     scores = [line[1][1] for line in result]
     accuracy = sum(scores) / len(scores)
-    with open('FinalYearProject\Project\Temp\output.txt', 'w') as f:
+    with open('Temp\output.txt', 'w') as f:
         f.write('confidence = '+ format(accuracy,'.2%') +'\n')
         f.write('\n'.join(txts))
 
