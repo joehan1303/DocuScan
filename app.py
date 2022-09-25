@@ -177,7 +177,8 @@ if uploaded_file is not None:
             final = scan(image)
             st.image(final, channels='BGR', use_column_width=True)
     if final is not None:
-        output_file = 'Temp\output.png'
+        output_file = os.path.join('Temp','output.png')
+        output_text = os.path.join('Temp','output.txt')
         data = Image.fromarray(final[:, :, ::-1])
         file_exists = os.path.exists(output_file)
         #Manages OCR Functionality
@@ -186,7 +187,7 @@ if uploaded_file is not None:
             txts = [line[1][0] for line in result]
             scores = [line[1][1] for line in result]
             accuracy = sum(scores) / len(scores)
-            with open('Temp\output.txt', 'w') as f:
+            with open(output_text, 'w') as f:
                 f.write('confidence = '+ format(accuracy,'.2%') +'\n')
                 f.write('\n'.join(txts))
         #Check if file Exists    
@@ -202,7 +203,7 @@ if uploaded_file is not None:
         #Display Download Buttons for image and txt files
         with open(output_file, "rb") as file:    
             st.sidebar.download_button(label="Download image", data= file, file_name="output.png", mime="image/png")
-        with open('Temp\output.txt') as txt:
+        with open(output_text) as txt:
             st.sidebar.download_button('Download Text', txt)
 
 
