@@ -1,0 +1,14 @@
+opencv-python == 4.6.0.66
+opencv-contrib-python == 4.6.0.66
+opencv-contrib-python-headless == 4.5.5.64
+numpy == 1.21.6
+streamlit == 1.10.0
+streamlit_drawable_canvas == 0.8
+Pillow == 9.1.1
+matplotlib == 3.5.2
+paddleocr == 2.6.0.1
+paddlepaddle == 2.3.2
+scikit-image == 0.19.3
+scipy == 1.5.4
+matplotlib == 3.5.2
+numpy == 1.21.6
