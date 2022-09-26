@@ -9,15 +9,6 @@ from PIL import Image
 from paddleocr import PaddleOCR
 ocr = PaddleOCR(use_angle_cls=True)
 
-'''
-# We create a downloads directory within the streamlit static asset directory
-# and we write output files to it
-STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / 'static'
-DOWNLOADS_PATH = (STREAMLIT_STATIC_PATH / "downloads")
-if not DOWNLOADS_PATH.is_dir():
-    DOWNLOADS_PATH.mkdir()
-'''
-
 def order_points(pts):
     '''Rearrange coordinates to order:
        top-left, top-right, bottom-right, bottom-left'''
@@ -194,9 +185,13 @@ if uploaded_file is not None:
         if file_exists is True:
             # if true Remove existing file and save new file
             os.remove(output_file)
+            os.remove(output_text)
+            os.rmdir('Temp')
+            os.mkdir('Temp')
             data.save(output_file)
         else:
             #else save file
+            os.mkdir('Temp')
             data.save(output_file)
             
         ocrmanager(output_file)
