@@ -32,7 +32,8 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: install Linux Dependencies
-        run: sudo apt-get install ffmpeg libsm6 libxext6 -y
+        run: apt-get update -y && apt-get install -y python3-opencv 
+        run: sudo apt-get install ffmpeg libsm6 libxext6 -y 
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
