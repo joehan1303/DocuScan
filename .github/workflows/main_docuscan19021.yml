@@ -31,8 +31,10 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      - name: install Linux Dependencies
+      - name: install Opencv Dependencies
         run: apt-get update -y && apt-get install -y python3-opencv 
+      
+      - name: install Linux Dependancies  
         run: sudo apt-get install ffmpeg libsm6 libxext6 -y 
       
       - name: Upload artifact for deployment jobs
