@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-import pathlib
 from streamlit_drawable_canvas import st_canvas
 import cv2
 import numpy as np
@@ -10,13 +9,14 @@ from PIL import Image
 from paddleocr import PaddleOCR
 ocr = PaddleOCR(use_angle_cls=True)
 
+'''
 # We create a downloads directory within the streamlit static asset directory
 # and we write output files to it
 STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / 'static'
 DOWNLOADS_PATH = (STREAMLIT_STATIC_PATH / "downloads")
 if not DOWNLOADS_PATH.is_dir():
     DOWNLOADS_PATH.mkdir()
-
+'''
 
 def order_points(pts):
     '''Rearrange coordinates to order:
